@@ -7,7 +7,7 @@ plugins {
 
 
 version "0.1"
-group "otp-service.micronaut"
+group "otpservice.micronaut"
 
 repositories {
     mavenCentral()
@@ -36,11 +36,13 @@ dependencies {
     testImplementation "org.junit.jupiter:junit-jupiter-api"
     testImplementation "io.micronaut.test:micronaut-test-junit5"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"
+    compileOnly 'org.projectlombok:lombok:1.18.10'
+    annotationProcessor 'org.projectlombok:lombok:1.18.10'
 }
 
 test.classpath += configurations.developmentOnly
 
-mainClassName = "otp-service.micronaut.Application"
+mainClassName = "otpservice.micronaut.Application"
 // use JUnit 5 platform
 test {
     useJUnitPlatform()

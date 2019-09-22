@@ -1,4 +1,4 @@
-package OtpService.micronaut;
+package otpservice.micronaut;
 
 import io.micronaut.runtime.Micronaut;
 
