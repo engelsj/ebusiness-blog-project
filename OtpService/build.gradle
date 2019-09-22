@@ -7,7 +7,7 @@ plugins {
 
 
 version "0.1"
-group "otp-adapter.micronaut"
+group "otp-service.micronaut"
 
 repositories {
     mavenCentral()
@@ -40,7 +40,7 @@ dependencies {
 
 test.classpath += configurations.developmentOnly
 
-mainClassName = "otp-adapter.micronaut.Application"
+mainClassName = "otp-service.micronaut.Application"
 // use JUnit 5 platform
 test {
     useJUnitPlatform()
