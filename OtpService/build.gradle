@@ -20,6 +20,7 @@ configurations {
 }
 
 dependencies {
+    implementation group: "com.twilio.sdk", name: "twilio", version: "7.42.0"
     annotationProcessor platform("io.micronaut:micronaut-bom:$micronautVersion")
     annotationProcessor "io.micronaut:micronaut-inject-java"
     annotationProcessor "io.micronaut:micronaut-validation"
