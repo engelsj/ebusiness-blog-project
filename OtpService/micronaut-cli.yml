@@ -1,5 +1,5 @@
 profile: service
-defaultPackage: otp-adapter.micronaut
+defaultPackage: otpservice.micronaut
 ---
 testFramework: junit
 sourceLanguage: java
