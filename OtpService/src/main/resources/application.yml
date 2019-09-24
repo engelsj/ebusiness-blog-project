@@ -2,6 +2,6 @@ micronaut:
   application:
     name: otpservice
 twilio:
-  account: AC5b3bd4b60d419c39a2681f13ae26d392
-  token: 8ed451c3b4bc1de8516832c186d45022
-  sid: VA7656bb5d9af92a9460363acf53b52749
+  account:
+  token:
+  sid:
