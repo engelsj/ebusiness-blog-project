@@ -28,11 +28,18 @@ public class SendOtpResponse {
     @JsonProperty
     String valid;
 
+    @JsonProperty
+    String errorMessage;
+
     public SendOtpResponse(Verification verification) {
         setAccount_sid(verification.getAccountSid());
         setService_sid(verification.getServiceSid());
         setTo(verification.getTo().toString());
         setStatus(verification.getStatus());
         this.setValid(verification.getValid().toString());
+    }
+
+    public SendOtpResponse(String errorMessage){
+        this.errorMessage = errorMessage;
     }
 }

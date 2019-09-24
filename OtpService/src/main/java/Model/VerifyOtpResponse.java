@@ -27,6 +27,9 @@ public class VerifyOtpResponse {
     @JsonProperty
     String valid;
 
+    @JsonProperty
+    String errorMessage;
+
     public VerifyOtpResponse(VerificationCheck verificationCheck) {
         setSid(verificationCheck.getSid());
         setService_sid(verificationCheck.getServiceSid());
@@ -34,6 +37,10 @@ public class VerifyOtpResponse {
         setPhoneNumber(verificationCheck.getTo());
         setStatus(verificationCheck.getStatus());
         setValid(verificationCheck.getValid().toString());
+    }
+
+    public VerifyOtpResponse(String errorMessage){
+        this.errorMessage = errorMessage;
     }
 
 }

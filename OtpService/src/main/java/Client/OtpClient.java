@@ -23,22 +23,32 @@ public class OtpClient {
     }
 
     public SendOtpResponse sendOtp(SendOtpRequest sendOtpResponse){
-        Verification verification = Verification.creator(
-                SID,
-                sendOtpResponse.getPhoneNumber(),
-                "sms")
-                .create();
-        SendOtpResponse response = new SendOtpResponse(verification);
-        return response;
+        try {
+            Verification verification = Verification.creator(
+                    SID,
+                    sendOtpResponse.getPhoneNumber(),
+                    "sms")
+                    .create();
+            SendOtpResponse response = new SendOtpResponse(verification);
+            return response;
+        }
+        catch(Exception e){
+            return new SendOtpResponse(e.toString());
+        }
 
     }
 
     public VerifyOtpResponse verifyOtp(VerifyOtpRequest verifyOtpRequest){
-        VerificationCheck verificationCheck = VerificationCheck.creator(
-                SID,
-                verifyOtpRequest.getCode())
-                .setTo(verifyOtpRequest.getPhoneNumber()).create();
-        VerifyOtpResponse response = new VerifyOtpResponse(verificationCheck);
-        return response;
+        try {
+            VerificationCheck verificationCheck = VerificationCheck.creator(
+                    SID,
+                    verifyOtpRequest.getCode())
+                    .setTo(verifyOtpRequest.getPhoneNumber()).create();
+            VerifyOtpResponse response = new VerifyOtpResponse(verificationCheck);
+            return response;
+        }
+        catch(Exception e) {
+            return new VerifyOtpResponse(e.toString());
+        }
     }
 }
