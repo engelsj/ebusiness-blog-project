@@ -2,8 +2,11 @@ package Client;
 
 import Model.SendOtpRequest;
 import Model.SendOtpResponse;
+import Model.VerifyOtpRequest;
+import Model.VerifyOtpResponse;
 import com.twilio.Twilio;
 import com.twilio.rest.verify.v2.service.Verification;
+import com.twilio.rest.verify.v2.service.VerificationCheck;
 
 import javax.inject.Singleton;
 
@@ -25,13 +28,17 @@ public class OtpClient {
                 sendOtpResponse.getPhoneNumber(),
                 "sms")
                 .create();
-
-        response.setAccount_sid(verification.getAccountSid());
-        response.setService_sid(verification.getServiceSid());
-        response.setTo(verification.getTo().toString());
-        response.setStatus(verification.getStatus());
-        response.setValid(verification.getValid().toString());
+        SendOtpResponse response = new SendOtpResponse(verification);
         return response;
 
+    }
+
+    public VerifyOtpResponse verifyOtp(VerifyOtpRequest verifyOtpRequest){
+        VerificationCheck verificationCheck = VerificationCheck.creator(
+                SID,
+                verifyOtpRequest.getCode())
+                .setTo(verifyOtpRequest.getPhoneNumber()).create();
+        VerifyOtpResponse response = new VerifyOtpResponse(verificationCheck);
+        return response;
     }
 }

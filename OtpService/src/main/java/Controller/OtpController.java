@@ -3,6 +3,7 @@ package Controller;
 import Model.SendOtpRequest;
 import Model.SendOtpResponse;
 import Model.VerifyOtpRequest;
+import Model.VerifyOtpResponse;
 import Service.OtpService;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
@@ -31,7 +32,7 @@ public class OtpController {
     @Post("/verify")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public String verifyOtp(@Body VerifyOtpRequest sendOtpRequest){
-        return sendOtpRequest.getPhoneNumber();
+    public VerifyOtpResponse verifyOtp(@Body VerifyOtpRequest verifyOtpRequest){
+        return otpService.verifyOtp(verifyOtpRequest);
     }
 }
