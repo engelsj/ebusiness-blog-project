@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: lightcyan;
+    
+}
+
+section {
+    background-size: contain;
+    background-color: floralwhite;
+}
+
+
+form, Login {
+    text-align: center;   
+    color: black;  
+    font-family: "Noto Serif", serif;
+    font-weight: 700
+}
+
+p {
+    text-align: center;
+}
+
+ .header input {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #FFF;
+    width: 165px;
+}
+
