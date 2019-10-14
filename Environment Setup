@@ -1,0 +1,6 @@
+Run the app using Visual studio Code and mySQL for the database
+npm install to download all the necessary modules 
+Password for mySQL is 'ebusiness'
+You must run express-react/backend/client/src/App.js on localhost 3000 
+express-react/backend/app.js is on localhost 3001
+These must be run at the same time
