@@ -2,7 +2,8 @@
 
 import React, { Component } from "react";
 
-import { Button } from 'react-bootstrap';
+import { Button, FormGroup } from 'react-bootstrap';
+import '../components/login/login.sass';
 
 
 
@@ -24,12 +25,15 @@ class Home extends Component {
 
 
         return (
-        
-            <div class="text-center">
-                <h1>
-                    <NavLink exact to="/Secure"><Button type="submit" bsStyle="primary" ><h1>secure</h1></Button></NavLink>
 
-                    <NavLink exact to="/Login"> <Button type="submit" bsStyle="primary" ><h1>unsecure</h1></Button></NavLink>
+            <div class="Home">   
+                <h1>
+                    <FormGroup className="text-center">
+                        <NavLink exact to="/Secure"><Button type="submit" bsStyle="primary" ><h1>secure</h1></Button></NavLink>
+                    </FormGroup>
+                    <FormGroup className="text-center">
+                        <NavLink exact to="/Login"> <Button type="submit" bsStyle="primary" ><h1>unsecure</h1></Button></NavLink>
+                    </FormGroup>
                 </h1>
             </div>
         )
