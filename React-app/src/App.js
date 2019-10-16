@@ -22,8 +22,8 @@ class App extends Component {
                         <div>
                             <h3>
                                 <ul className="header" >
-                                    <li><NavLink exact to="/">Main</NavLink></li>
-                                    <li><NavLink to="/Login">Login</NavLink></li>
+                                    <NavLink exact to="/"><h1>Main</h1></NavLink>
+                                    
 
 
 
