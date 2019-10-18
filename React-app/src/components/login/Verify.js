@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './login.sass';
 
-import { Row, FormGroup, FormControl, ControlLabel, Button, HelpBlock } from 'react-bootstrap';
+import { Row, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
 
-var code_to_Verify = "no number entered yet";
+var code_to_Verify = "no number";
 var code = '';
 
 
@@ -74,7 +74,14 @@ class Verify extends React.Component {
                 otpVerifyResponse: json
             });
         });
-        console.log(c, number);
+        setTimeout(() => {
+            if (this.state.otpVerifyResponse.valid === "true") {
+                alert('OTP is valid');
+            }
+            else {
+                alert('OTP invalid try again');
+            }
+        }, 3000);
     }
 
     handleSubmit(event) {
@@ -99,18 +106,11 @@ class Verify extends React.Component {
             }
         })
     }
-    handleCode(x) {
+    handleCode(e) {
         this.verifyOtp(this.state.number, this.state.code);
-        alert('code: ' + this.state.code);
+        e.preventDefault();
+
     }
-
-
-
-
-
-
-
-
 
     render() {
         return (
