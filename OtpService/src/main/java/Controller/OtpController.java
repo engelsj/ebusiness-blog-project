@@ -7,12 +7,12 @@ import Model.VerifyOtpResponse;
 import Service.OtpService;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
+import io.micronaut.security.annotation.Secured;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
 
 @Controller("/otp")
-@Singleton
+@Secured("isAuthenticated()")
 public class OtpController {
 
     OtpService otpService;
@@ -34,5 +34,12 @@ public class OtpController {
     @Produces(MediaType.APPLICATION_JSON)
     public VerifyOtpResponse verifyOtp(@Body VerifyOtpRequest verifyOtpRequest){
         return otpService.verifyOtp(verifyOtpRequest);
+    }
+
+    @Post("/test")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String testService(@Body SendOtpRequest sendOtpRequest){
+        return "SendOTP to " + sendOtpRequest.getPhoneNumber();
     }
 }
