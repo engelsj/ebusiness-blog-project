@@ -40,6 +40,7 @@ class Verify extends React.Component {
         code_to_Verify = this.state.number;
       //  this.setState({ number: '' });
         this.check();
+        //this.cheekyCheck();
         event.preventDefault();
 
         secret = '';
@@ -148,6 +149,24 @@ class Verify extends React.Component {
 
     }
 
+    cheekyCheck(event) {
+        var cheeky = "";
+        cheeky += x;
+        cheeky += y;
+        cheeky += z;
+
+        if (cheeky === "123") {
+            alert('SUCCESS');
+            window.location.reload();
+
+        }
+        else {
+            alert('FAIL');
+            window.location.reload();
+
+        }
+
+    }
 
 
     handleX(event) {
