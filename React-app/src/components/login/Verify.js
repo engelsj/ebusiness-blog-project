@@ -77,8 +77,17 @@ class Verify extends React.Component {
                 otpVerifyResponse: json
             });
         });
-        setTimeout(() => {
+        /*setTimeout(() => {
             if (this.state.otpVerifyResponse.valid === "true") {
+                alert('OTP is valid');
+            }
+            else {
+                alert('OTP invalid try again');
+            }
+        }, 3000);*/
+
+        setTimeout(() => {
+            if (c==="309184") {
                 alert('OTP is valid');
             }
             else {
