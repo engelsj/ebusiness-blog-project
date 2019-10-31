@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
 import './login.sass';
+import { NavLink, } from "react-router-dom";
 
 import { Row, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
 
-var code_to_Verify = "no number";
-var code = '';
+
+
+
+let code_to_Verify = "";
+let code = '';
 
 
 class Verify extends React.Component {
 
-    // Using a class based component here because we're accessing DOM refs
     constructor(props) {
         super(props);
         this.state = {
@@ -108,7 +111,11 @@ class Verify extends React.Component {
     }
     handleCode(e) {
         this.verifyOtp(this.state.number, this.state.code);
+
         e.preventDefault();
+
+
+
 
     }
 
@@ -139,11 +146,11 @@ class Verify extends React.Component {
                         </FormGroup>
 
                     </form>
-                </Row>
+                </Row> 
 
+                      <NavLink to="/partial">click here to go to partial password</NavLink>
 
-
-            </div>
+                </div>
         )
     }
 
