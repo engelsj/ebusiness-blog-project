@@ -29,10 +29,10 @@ class Home extends Component {
             <div class="Home">   
                 <h1>
                     <FormGroup className="text-center">
-                        <NavLink exact to="/Secure"><Button type="submit" bsStyle="primary" ><h1>secure</h1></Button></NavLink>
+                        <NavLink exact to="/Secure"><Button type="submit" bsStyle="primary" ><h1>Untrusted Login Page</h1></Button></NavLink>
                     </FormGroup>
                     <FormGroup className="text-center">
-                        <NavLink exact to="/Login"> <Button type="submit" bsStyle="primary" ><h1>unsecure</h1></Button></NavLink>
+                        <NavLink exact to="/Login"> <Button type="submit" bsStyle="primary" ><h1>Trusted Login Page</h1></Button></NavLink>
                     </FormGroup>
                 </h1>
             </div>

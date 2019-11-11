@@ -1,19 +1,16 @@
 import React from 'react';
 import { Row, FormGroup, FormControl, ControlLabel, Button } from 'react-bootstrap';
 import './login.sass';
+import Secure from './Secure';
+import { Route, Link, Switch, Redirect } from 'react-router-dom';
 
 let code_to_Verify = "no number entered yet";
 
 var x, y, z, a, b, c;
-
 var password = '351235';
 var secret = '';
 var array = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth'];
 let count = 0;
-let yeet = '';
-
-
-
 
 
 class Verify extends React.Component {
@@ -23,12 +20,10 @@ class Verify extends React.Component {
         super(props);
         this.state = {
             number: '',
-
         };
         this.handleNumber = this.handleNumber.bind(this);
 
         this.handleSubmit = this.handleSubmit.bind(this);
-
     }
 
     handleNumber(event) {
@@ -38,17 +33,13 @@ class Verify extends React.Component {
     handleSubmit(event) {
         count = 0;
         code_to_Verify = this.state.number;
-      //  this.setState({ number: '' });
+        //  this.setState({ number: '' });
         this.check();
         event.preventDefault();
-
         secret = '';
-        yeet = '';
     }
 
     randomize(e) {//function to assign values to random
-
-
         a = this.getRandomInt();
         b = this.getRandomInt();
         c = this.getRandomInt();
@@ -102,14 +93,10 @@ class Verify extends React.Component {
         if ((n3 > n1 && n3 < n2) || (n3 < n1 && n3 > n2)) {
             mid = n3;
         }
-
         a = min;
         b = mid;
         c = max;
-
     }
-
-
     getRandomInt() {
         var min = Math.ceil(0);
         var max = Math.floor(password.length - 1);
@@ -138,70 +125,82 @@ class Verify extends React.Component {
         }
 
         if (copy_password === password) {
-            alert('SUCCESS');
+            alert('Password Success');
+            //window.location.reload();
+            //window.location.href = '/Secure'
+          //  return <Redirect to="/Secure" />;
+            this.props.history.push('/')
         }
         else {
-            alert('FAIL');
-            window.location.reload();
+            alert('Password Fail');
+            //this.props.history.pop();
 
+             window.location.reload();
         }
-
     }
-
-
 
     handleX(event) {
         x = event.target.value;
-        event.target.value = "*";
+       // event.target.value = "*";
+
 
     }
     handleY(event) {
         y = event.target.value;
-        event.target.value = "*";
+       // event.target.value = "*";
 
     }
     handleZ(event) {
         z = event.target.value;
-        event.target.value = "*";
+       // event.target.value = "*";
     }
-
- 
 
 
     render() {
         this.randomize();
-        return (
-            <div className="OTP">
-                <Row>
-                    <form onSubmit={this.handleSubmit} >
-                        <FormGroup>
-
-                            <ControlLabel>
-                                {array[a]} number:
-          <FormControl type="text" number={''} placeholder="enter the number" onChange={this.handleX}  />
-                            </ControlLabel>
-                        </FormGroup>
-                        <FormGroup>
-
-                            <ControlLabel>
-                                {array[b]} number:
+        console.log( password );
+        if (password === '351235') {
+            return (
+                <div className="OTP">
+                    <Row>
+                        <form onSubmit={this.handleSubmit} >
+                            <FormGroup>
+                                <ControlLabel>
+                                    {array[a]} number:
+          <FormControl type="text" number={''} placeholder="enter the number" onChange={this.handleX} />
+                                </ControlLabel>
+                            </FormGroup>
+                            <FormGroup>
+                                <ControlLabel>
+                                    {array[b]} number:
           <FormControl type="text" number={''} placeholder="enter the number" onChange={this.handleY} />
-                            </ControlLabel>
-                        </FormGroup>
-                        <FormGroup>
+                                </ControlLabel>
+                            </FormGroup>
+                            <FormGroup>
+                                <ControlLabel>
+                                    {array[c]} number
+          <FormControl type="text" number={''} placeholder="enter the number" onChange={this.handleZ} />
+                                </ControlLabel>
+                            </FormGroup>
+                            <Button type="submit" value="Submit" bsStyle="primary"  >submit</Button>
 
-                            <ControlLabel>
-                                {array[c]} number
-          <FormControl type="text" number={''} placeholder="enter the number"onChange={this.handleZ} />
-                            </ControlLabel>
-                        </FormGroup>
+                        </form>
+
+                    </Row>
+                </div>
+            )
+        }
+        else {
+            return (
+                <div className="OTP">
+                    <Row>
                         <Button type="submit" value="Submit" bsStyle="primary"  >submit</Button>
+                        
 
-                    </form>
-
-                </Row>
-            </div>
-        )
+                    </Row>
+                </div>
+            )
+        }
     }
 
 }

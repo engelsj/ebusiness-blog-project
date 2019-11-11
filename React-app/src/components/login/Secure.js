@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Row, FormGroup, FormControl, ControlLabel, Button, HelpBlock } from 'react-bootstrap';
-import './login.sass';
 import { isEmail, isEmpty, isLength, isContainWhiteSpace } from './validator';
 
 
@@ -49,17 +48,7 @@ class Login extends Component {
             errors.email = "Please enter a valid email";
         }
 
-        if (isEmpty(formData.password)) {
-            errors.password = "Password can't be blank";
-        } else if (isContainWhiteSpace(formData.password)) {
-            errors.password = "Password should not contain white spaces";
-        } else if (!isLength(formData.password, { gte: 6, lte: 16, trim: true })) {
-            errors.password = "Password's length must between 6 to 16";
-        }
-        else if (("banan" + formData.password + "a") !== "bananbananaa") {
-            errors.password = "incorrect password";
-
-        }
+        
 
         if (isEmpty(errors)) {
             return true;
@@ -93,6 +82,7 @@ class Login extends Component {
 
         if (errors === true) {
             alert("You are successfully signed in...");
+            this.props.history.push('/Verify')
 
 
         } else {
@@ -122,9 +112,7 @@ class Login extends Component {
                                 <HelpBlock>{errors.email}</HelpBlock>
                             }
                         </FormGroup>
-                        <NavLink to="/Verify">
                             <Button type="submit" bsStyle="primary" >Sign-In</Button>
-                        </NavLink>
                     </form>
                 </Row>
 

@@ -90,6 +90,7 @@ class Login extends Component {
 
         if (errors === true) {
             alert("You are successfully signed in...");
+            window.location.href = '/Verify'
 
 
         } else {
