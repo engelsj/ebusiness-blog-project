@@ -20,19 +20,19 @@ public class ValidateController {
         this.validateService = validateService;
     }
 
-    @Get
+    @Get("/user")
     public boolean isUser(@Header String userName){
         return validateService.isUser(userName);
     }
 
-    @Post
+    @Post("/generatePartialPassword")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public PartialPasswordResponse generatePartialPassword(@Body PartialPasswordRequest partialPasswordRequest){
         return  validateService.generatePartialPassword(partialPasswordRequest);
     }
 
-    @Post
+    @Post("/verifyPartialPassword")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public VerifyPartialPasswordResponse validatePartialPassword(@Body VerifyPartialPasswordRequest verifyPartialPasswordRequest){
