@@ -13,9 +13,9 @@ import javax.inject.Singleton;
 @Singleton
 public class OtpClient {
 
-    public static final String ACCOUNT_SID = "AC5b3bd4b60d419c39a2681f13ae26d392";
-    public static final String AUTH_TOKEN = "4d5894f3df0cb28019b42933da8fa005";
-    public static final String SID = "VA7656bb5d9af92a9460363acf53b52749";
+    public static final String ACCOUNT_SID = "";
+    public static final String AUTH_TOKEN = "";
+    public static final String SID = "";
     Twilio twilioClient;
 
     public OtpClient(){

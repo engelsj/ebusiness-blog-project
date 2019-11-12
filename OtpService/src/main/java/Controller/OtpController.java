@@ -7,12 +7,11 @@ import Model.VerifyOtpResponse;
 import Service.OtpService;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
-import io.micronaut.security.annotation.Secured;
+
 
 import javax.inject.Inject;
 
 @Controller("/otp")
-@Secured("isAuthenticated()")
 public class OtpController {
 
     OtpService otpService;
