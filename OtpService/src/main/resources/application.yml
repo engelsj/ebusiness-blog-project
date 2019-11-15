@@ -1,4 +1,6 @@
 micronaut:
+  security:
+    enabled: true
   ssl:
     enabled: true
     buildSelfSigned: true
