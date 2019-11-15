@@ -6,15 +6,15 @@
 - Amy Pierce 
 - Ciara O'Sullivan
 
-#Otp-Service
+## Otp-Service
 
-## Requirments 
+### Requirments 
 - [Java 1.8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 
 - [Micronaut](https://micronaut.io/download.html) 
 - IDE i.e. [Intellij](https://www.jetbrains.com/idea/)
 - Gradle/Maven 
 
-## Usage
+### Usage
 Within your project's directory 
 ```
 ./gradlew run 
