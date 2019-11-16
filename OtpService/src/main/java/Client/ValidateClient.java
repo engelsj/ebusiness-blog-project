@@ -1,23 +1,37 @@
 package Client;
 
+import AES.AES;
 import Model.PartialPasswordResponse;
 import Model.VerifyPartialPasswordRequest;
 import Model.VerifyPartialPasswordResponse;
+import Users.User;
 
 import javax.inject.Singleton;
 import java.util.ArrayList;
 
 import java.util.Collections;
+import java.util.HashMap;
 
 @Singleton
 public class ValidateClient {
 
-    String tempPassword = "Trinity";
-    public boolean isUser(String userName) {
-        if(userName.equals("jengels"))
-            return true;
-        else
-            return false;
+
+    HashMap<String, User> userHashMap;
+    String testKey = "ssshhhhhhhhhhh!!!!";
+
+    public ValidateClient(){
+
+        // make some users instead of loading them from database
+        AES aes = new AES();
+        userHashMap = new HashMap<>();
+        userHashMap.put("jengels", new User(aes.encrypt("Trinity123", testKey),aes.encrypt("", testKey)));
+        userHashMap.put("liam", new User(aes.encrypt("CSB2019", testKey),aes.encrypt("", testKey)));
+    }
+
+    public String isUser(String userName) {
+        if(userHashMap.containsKey(userName))
+            return AES.decrypt(userHashMap.get(userName).getPhoneNumber(),testKey);
+        return "Not Found";
     }
 
     public PartialPasswordResponse generatePartialPassword(String userName){
@@ -26,11 +40,13 @@ public class ValidateClient {
         if(userName != null) {
             response.setUserName(userName);
             ArrayList<Integer> tempArray = new ArrayList<>();
-            for (int i = 0; i < tempPassword.length(); i++)
+            for (int i = 0; i < AES.decrypt(userHashMap.get(userName).getPassword(),testKey).length(); i++) {
                 tempArray.add(i);
+            }
             Collections.shuffle(tempArray);
+
             StringBuilder indexes = new StringBuilder();
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 3; i++)
                 indexes.append(tempArray.get(i));
             response.setIndexes(indexes.toString());
             return response;
@@ -51,7 +67,8 @@ public class ValidateClient {
         for(int i = 0; i < verifyPartialPasswordRequest.getIndexes().length(); i++)
         {
             if(verifyPartialPasswordRequest.getPartialPassword().charAt(i) !=
-                    (tempPassword.charAt(verifyPartialPasswordRequest.getIndexes().charAt(i) - '0')))
+                    (AES.decrypt(userHashMap.get(verifyPartialPasswordRequest.getUserName()).getPassword(),testKey).
+                            charAt(verifyPartialPasswordRequest.getIndexes().charAt(i) - '0')))
             {
                 verifyPartialPasswordResponse.setValid(false);
                 return  verifyPartialPasswordResponse;
@@ -60,5 +77,12 @@ public class ValidateClient {
         verifyPartialPasswordResponse.setValid(true);
 
         return verifyPartialPasswordResponse;
+    }
+
+    public boolean login(String userName, String password){
+        if(userHashMap.containsKey(userName))
+            if(AES.decrypt(userHashMap.get(userName).getPassword(),testKey).equals(password))
+                return true;
+            return false;
     }
 }

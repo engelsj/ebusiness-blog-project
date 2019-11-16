@@ -17,7 +17,7 @@ public class ValidateService {
         this.validateClient = validateClient;
     }
 
-    public boolean isUser(String userName){
+    public String isUser(String userName){
         return validateClient.isUser(userName);
     }
 
@@ -27,5 +27,9 @@ public class ValidateService {
 
     public VerifyPartialPasswordResponse validatePartialPassword(VerifyPartialPasswordRequest verifyPartialPasswordRequest){
         return validateClient.validatePartialPassword(verifyPartialPasswordRequest);
+    }
+
+    public boolean login(String userName, String password){
+        return validateClient.login(userName, password);
     }
 }

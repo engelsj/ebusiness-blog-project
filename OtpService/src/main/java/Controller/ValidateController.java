@@ -1,9 +1,6 @@
 package Controller;
 
-import Model.PartialPasswordRequest;
-import Model.PartialPasswordResponse;
-import Model.VerifyPartialPasswordRequest;
-import Model.VerifyPartialPasswordResponse;
+import Model.*;
 import Service.ValidateService;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
@@ -23,7 +20,7 @@ public class ValidateController {
     }
 
     @Get("/user")
-    public boolean isUser(@Header String userName){
+    public String isUser(@Header String userName){
         return validateService.isUser(userName);
     }
 
@@ -39,6 +36,13 @@ public class ValidateController {
     @Produces(MediaType.APPLICATION_JSON)
     public VerifyPartialPasswordResponse validatePartialPassword(@Body VerifyPartialPasswordRequest verifyPartialPasswordRequest){
         return validateService.validatePartialPassword(verifyPartialPasswordRequest);
+    }
+
+    @Post("/login")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public boolean login(@Body LoginRequest loginRequest){
+        return validateService.login(loginRequest.getUserName(), loginRequest.getPassword());
     }
 
 }
