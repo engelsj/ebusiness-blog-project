@@ -14,6 +14,10 @@
 - IDE i.e. [Intellij](https://www.jetbrains.com/idea/)
 - [Lombok](https://projectlombok.org/)
 - Gradle/Maven
+- [Twilio Verify Credentials](https://www.twilio.com/docs/verify)
+
+Note:
+This project relies heavily on Micronaut to create microservices and the usage of Twilio to send and verifies OTP codes. Before going further please feel very comfortable with both of these systems. 
 
 ### Endpoints
 
