@@ -15,8 +15,8 @@ public class AuthenticationProviderUserPassword implements AuthenticationProvide
 
     @Override
     public Publisher<AuthenticationResponse> authenticate(AuthenticationRequest authenticationRequest) {
-        if ( authenticationRequest.getIdentity().equals("eBusinessProject") &&
-                authenticationRequest.getSecret().equals("CSB2019") ) {
+        if ( authenticationRequest.getIdentity().equals("") &&
+                authenticationRequest.getSecret().equals("") ) {
             return Flowable.just(new UserDetails((String) authenticationRequest.getIdentity(), new ArrayList<>()));
         }
         return Flowable.just(new AuthenticationFailed());
