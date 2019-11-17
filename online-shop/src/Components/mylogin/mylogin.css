@@ -1,0 +1,27 @@
+.l {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.lo {
+    height: 100px;
+    width: 200px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+ }
+.log {
+   
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+ }
+
+.avatar {
+     margin-bottom: 10px;
+}
+
