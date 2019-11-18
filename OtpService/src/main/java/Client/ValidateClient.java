@@ -9,6 +9,7 @@ import Users.User;
 import javax.inject.Singleton;
 import java.util.ArrayList;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 
@@ -24,7 +25,7 @@ public class ValidateClient {
         // make some users instead of loading them from database
         AES aes = new AES();
         userHashMap = new HashMap<>();
-        userHashMap.put("jengels", new User(aes.encrypt("Trinity123", testKey),aes.encrypt("", testKey)));
+        userHashMap.put("", new User(aes.encrypt("Trinity123", testKey),aes.encrypt("", testKey)));
         userHashMap.put("liam", new User(aes.encrypt("CSB2019", testKey),aes.encrypt("", testKey)));
     }
 
@@ -48,7 +49,11 @@ public class ValidateClient {
             StringBuilder indexes = new StringBuilder();
             for (int i = 0; i < 3; i++)
                 indexes.append(tempArray.get(i));
-            response.setIndexes(indexes.toString());
+            char tempStringArray[] = indexes.toString().toCharArray();
+            Arrays.sort(tempStringArray);
+            response.setIndex1(tempStringArray[0] - '0' + 1);
+            response.setIndex2(tempStringArray[1] - '0' + 1);
+            response.setIndex3(tempStringArray[2] - '0' + 1);
             return response;
         }
         response.setErrorMessage("No Username");

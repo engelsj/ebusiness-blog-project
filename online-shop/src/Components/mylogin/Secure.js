@@ -18,6 +18,8 @@ class Login extends Component {
             formData: {}, // Contains login form data
             errors: {}, // Contains login field errors
             formSubmitted: false, // Indicates submit status of login form
+            userResponse: [],
+            otpResponse: [],
             loading: false // Indicates in progress state of login form
         }
 
@@ -44,20 +46,76 @@ class Login extends Component {
 
         if (isEmpty(formData.email)) {
             errors.email = "Email can't be blank";
-        } else if (!isEmail(formData.email)) {
+            return errors;
+        } 
+        else if (!isEmail(formData.email)){
             errors.email = "Please enter a valid email";
-        }
-
-
-
-        if (isEmpty(errors)) {
-            return true;
-        } else {
             return errors;
         }
+        else
+        {
+            this.validateUser(formData.email);
+            setTimeout(()=>{
+            if(this.state.userResponse.message === 'Not Found'){
+                alert("Failed");
+                errors.password = "incorrect username";
+                return false
+            }
+            else{
+                this.sendOTP(this.state.userResponse.message);
+                setTimeout(()=>{
+                alert("OTP Sent");
+                localStorage.setItem('userName', formData.email)
+                localStorage.setItem('phoneNumber',this.state.userResponse.message)
+                this.props.history.push('/Verify');
+
+                },3000);
+            }
+            },1000);
+        }
+        return errors;
     }
+
+    validateUser(username) {
+        let headers = new Headers();
+        fetch('http://localhost:8080/validate/user', {
+        method: 'POST',
+        body: JSON.stringify({
+        userName: username,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    }).then(response => {
+        return response.json()
+      }).then(json => {
+        this.setState({
+          userResponse:json
+        });
+      });
+    }
+
+    sendOTP(phoneNumber) {
+        let headers = new Headers();
+        fetch('http://localhost:8080/otp/send', {
+        method: 'POST',
+        body: JSON.stringify({
+        phoneNumber: phoneNumber,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    }).then(response => {
+        return response.json()
+      }).then(json => {
+        this.setState({
+          otpResponse:json
+        });
+      });
+    }
+
     check() {
-        var test = "yess";
+        var test = "yes";
         var x = test.charAt(1);
         console.log(x);
     }

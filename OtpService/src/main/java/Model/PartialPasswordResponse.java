@@ -11,7 +11,13 @@ public class PartialPasswordResponse {
     String userName;
 
     @JsonProperty
-    String indexes;
+    Integer index1;
+
+    @JsonProperty
+    Integer index2;
+
+    @JsonProperty
+    Integer index3;
 
     @JsonProperty
     String errorMessage;

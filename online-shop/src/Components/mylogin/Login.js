@@ -24,7 +24,8 @@ class Login extends Component {
             formData: {}, // Contains login form data
             errors: {}, // Contains login field errors
             formSubmitted: false, // Indicates submit status of login form
-            loading: false // Indicates in progress state of login form
+            loading: false, // Indicates in progress state of login form
+            validateResponse: []
         }
 
 
@@ -50,30 +51,57 @@ class Login extends Component {
 
         if (isEmpty(formData.email)) {
             errors.email = "Email can't be blank";
+            return errors;
         } else if (!isEmail(formData.email)) {
             errors.email = "Please enter a valid email";
-        }
-
-        if (isEmpty(formData.password)) {
-            errors.password = "Password can't be blank";
-        } else if (isContainWhiteSpace(formData.password)) {
-            errors.password = "Password should not contain white spaces";
-        } else if (!isLength(formData.password, { gte: 6, lte: 16, trim: true })) {
-            errors.password = "Password's length must between 6 to 16";
-        }
-        else if (("banan" + formData.password + "a") !== "bananbananaa") {
-            //check();
-            errors.password = "incorrect password";
-
-        }
-
-        if (isEmpty(errors)) {
-            return true;
-        } else {
-
             return errors;
         }
+
+        else if (isEmpty(formData.password)) {
+            errors.password = "Password can't be blank";
+            return errors;
+        }
+
+        else
+        {
+            this.validateUser(formData.email, formData.password);
+            setTimeout(()=>{
+            if(this.state.validateResponse.valid===true){
+                alert("Login Successful");
+                this.props.history.push('/dark');
+                return true;
+            }
+            else{
+                alert("Login Failed");
+                errors.password = "incorrect password";
+                return false
+            }
+            },1000);
+        }
+        return false;
     }
+
+    
+    validateUser(username, password) {
+        let headers = new Headers();
+        fetch('http://localhost:8080/validate/login', {
+        method: 'POST',
+        body: JSON.stringify({
+        userName: username,
+        password: password,
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    }).then(response => {
+        return response.json()
+      }).then(json => {
+        this.setState({
+          validateResponse:json
+        });
+      });
+    }
+
     check() {
         var test = "yess";
         var x = test.charAt(1);
