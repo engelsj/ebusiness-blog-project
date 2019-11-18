@@ -186,6 +186,49 @@ Within your project's directory
 ## Database
 
 ### Requirments
+- [MySQL Community Server 8.0](https://dev.mysql.com/downloads/mysql/) 
+- [xmysql](https://github.com/o1lab/xmysql) 
+- Optional IDE i.e. [MySQL Workbench](https://dev.mysql.com/downloads/workbench/)
+- [Node 12.0](https://nodejs.org/en/)
+
+Note: These are the guidelines for creating a MySQL server and REST API for the interfacing between the service and frontend described above. Familiarity with database concepts is a must. Please note that this description does not include encryption and should not be used as is in a live site. Also be aware that the tables/models used here can be changed as long as teh rest of the program is changed to reflect this. 
 
 ### Usage
+#### Table Creation
+In workbench, add a table to a model, making sure to assign an approiate Primary Key. The suggested primary key is the phone number in this case. 
 
+#### MySQL Access
+```
+
+```
+
+#### xmysql & REST
+##### Installation
+Install with node package in command line
+```
+npm install -g xmysql
+```
+May need to add xmysql to your systems PATH enviroment variables
+##### Usage 
+To start the xmysql and generate the API files
+```
+xmysql -h localhost -u mysqlUsername -p mysqlPassword -d databaseName
+```
+Will create an output like:
+```
+          Generating REST APIs at the speed of your thought..
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+          Database              :    Users
+          Number of Tables      :    1
+
+          REST APIs Generated   :    28
+
+          Xmysql took           :    0.1 seconds
+          API's base URL        :    localhost:3000
+
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+```
+This output means the API's have generated approtiatly. There are many commands that can be accessed via https://github.com/o1lab/xmysql
+#### 
