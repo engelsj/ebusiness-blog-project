@@ -194,14 +194,48 @@ Within your project's directory
 Note: These are the guidelines for creating a MySQL server and REST API for the interfacing between the service and frontend described above. Familiarity with database concepts is a must. Please note that this description does not include encryption and should not be used as is in a live site. Also be aware that the tables/models used here can be changed as long as teh rest of the program is changed to reflect this. 
 
 ### Usage
-#### Table Creation
+#### MySQL
+##### Table Creation
+MySQL log in is:
+```
+shell>mysql -u username -p
+```
+will launch the MySQL shell program, where tables can be edited and created. In workbench, one just has to start the program, log in, and click create table (within model detail screen).
 In workbench, add a table to a model, making sure to assign an approiate Primary Key. The suggested primary key is the phone number in this case. 
-
-#### MySQL Access
+In command line, to create a table the command is:
 ```
-
+mysql>CREATE TABLE tablename(
+userName            VARCHAR(25) NOT NULL,
+password            VARCHAR(25) NOT NULL,
+phoneNumber         VARCHAR(25) NOT NULL,
+PRIMARY KEY (phoneNumber)
+)
 ```
-
+The rows of the table can be changed to fit your own database needs. Be sure to follow safe database management guidelines.
+And to populate:
+```
+mysql>INSERT INTO tablename(column1,column2,column*) VALUES
+(item1col1,item1col2,item1col3),
+(item2col1,item2col2,item2col3);
+```
+##### MySQL Access
+SQL Queiries can be used to retrieve data from the tabel.
+For example, to retrieve all entries:
+```
+mysql>SELECT * FROM tablename;
+```
+will generate an output like:
+```
++--------------+-----------+-----------+
+| Phone Number | User Name | Password  |
++--------------+-----------+-----------+
+|    xxxxxxxxx | Liam      | Password  |
+|    xxxxxxxxx | Amy       | Computers |
+|    xxxxxxxxx | Ciara     | BeepBoop  |
+|    xxxxxxxxx | Luke      | Feely     |
++--------------+-----------+-----------+
+4 rows in set (0.01 sec)
+```
 #### xmysql & REST
 ##### Installation
 Install with node package in command line
@@ -214,6 +248,7 @@ To start the xmysql and generate the API files
 ```
 xmysql -h localhost -u mysqlUsername -p mysqlPassword -d databaseName
 ```
+##### Return
 Will create an output like:
 ```
           Generating REST APIs at the speed of your thought..
@@ -231,4 +266,5 @@ Will create an output like:
  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ```
 This output means the API's have generated approtiatly. There are many commands that can be accessed via https://github.com/o1lab/xmysql
+The strength of xmysql is that it generates all the applicable REST API's one can use on the selected database. 
 #### 
