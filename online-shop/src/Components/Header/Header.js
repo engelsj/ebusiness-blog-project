@@ -23,6 +23,9 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
+localStorage.setItem('login_status', 'Login');
+localStorage.setItem('db_email', '');
+
 
 const mapStateToProps = state => {
   return {
@@ -111,29 +114,61 @@ class ConnectedHeader extends Component {
               {" "}
               Search
             </Button>
-          </div>
+                
+
+                </div>
+
+
+
+
           <div className="right-part">
-            {!this.props.loggedInUser ? (
+            {localStorage.getItem('login_status')==='Login' ? (
               <Button
                 variant="outlined"
-                style={{ marginRight: 20 }}
+                style={{ marginRight: 30 }}
                 color="primary"
-                onClick={() => {
+                            onClick={() => {
+                                localStorage.setItem('login_status', 'Login');
+
                   this.props.history.push("/login");
                 }}
               >
-                Log in
-              </Button>
-            ) : (
+                          Login
+                        </Button>
+
+
+                    ) : (
+                            <div>
                 <Avatar
                   onClick={event => {
-                    this.setState({ anchorEl: event.currentTarget });
+                                        localStorage.setItem('login_status', 'Login');
+
+                                        this.props.history.push("/login");
                   }}
                   style={{ backgroundColor: "#3f51b5", marginRight: 10 }}
                 >
-                  <Person />
-                </Avatar>
-              )}
+                                    <Person />
+                                    <div class="user"> {localStorage.getItem('db_email')}</div>
+                            </Avatar>
+                                <div class="user"> {localStorage.getItem('db_email')}
+</div> 
+                                </div>
+
+                        )}
+                    <Button
+                        variant="outlined"
+                        style={{ marginRight: 60}}
+                        color="primary"
+                        onClick={() => {
+                          
+
+                            this.props.history.push("/register");
+                        }}
+                    >
+                       Register
+
+ 
+                    </Button>
             <IconButton
               aria-label="Cart"
               onClick={() => {
