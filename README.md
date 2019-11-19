@@ -180,8 +180,20 @@ Within your project's directory
 ## Frontend
 
 ### Requirments
+[node.js] (https://nodejs.org/en/download/)
+#### Dependencies
+- once npm i is run all dependencies dhould be installed needed to run the project
+- if any aditional installations are required they can be found [here] (https://www.npmjs.com/package/package)
+
+
 
 ### Usage
+Within your project's directory 
+```
+cd into online shop
+npm i (to install dependencies)
+npm start (to run)
+```
 
 ## Database
 
