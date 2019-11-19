@@ -22,6 +22,16 @@
     margin-left: 90px;
     width:350px;
 }
+
+.otp{
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+    margin-left: 0px;
+    width:350px;
+}
+
 .sub_heading{
     font-size:12px;
     margin-bottom:100px;
@@ -37,6 +47,14 @@
     margin-left:90px;
     text-align: center;
 }
+
+.avatar2 {
+    margin-bottom: 10px;
+    justify-content: center;
+    margin-left:0px;
+    text-align: center;
+}
+
 TextField.placeholder{
     text-align:center;
 }
@@ -44,10 +62,16 @@ TextField.placeholder{
 .link {
     font-size: 18px;
     text-align: center;
-    margin-left:40px;
-   width:70%;
+    margin-left:60px;
+    width:70%;
 }
 
+.externalLink{
+    font-size: 18px;
+    text-align: center;
+    margin-left:40px;
+    width:70%;
+}
 .fields {
     font-size: 18px;
     text-align: center;

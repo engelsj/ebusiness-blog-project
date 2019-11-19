@@ -25,8 +25,7 @@ public class ValidateClient {
         // make some users instead of loading them from database
         AES aes = new AES();
         userHashMap = new HashMap<>();
-        userHashMap.put("engelsj@tcd.ie", new User(aes.encrypt("123", testKey),aes.encrypt("1234567", testKey)));
-        userHashMap.put("collinsC@tcd.ie", new User(aes.encrypt("CSB2019", testKey),aes.encrypt("1234567", testKey)));
+       
     }
 
     public String isUser(String userName) {

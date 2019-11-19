@@ -6,9 +6,7 @@ import './mylogin.css';
 import Avatar from '@material-ui/core/Avatar';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { isEmail, isEmpty } from './validator';
-
-
-
+import { encode } from "base-64";
 let code_to_Verify = "";
 let code = '';
 
@@ -35,25 +33,6 @@ class Verify extends React.Component {
         code = this.state.code;
     }
 
-
-    sendOtp(number) {
-        fetch('https://cors-anywhere.herokuapp.com/http://34.76.147.17:8080/otp/send', {
-            method: 'POST',
-            body: JSON.stringify({
-                phoneNumber: number,
-            }),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
-        }).then(response => {
-            return response.json()
-        }).then(json => {
-            this.setState({
-                otpSendResponse: json
-            });
-        });
-    }
-
     handleInputChange = (event) => {
         const target = event.target;
         const value = target.value;
@@ -69,6 +48,8 @@ class Verify extends React.Component {
 
 
     verifyOtp(number, c) {
+        let usernameAuth = '123';
+        let passwordAuth = '123';
         fetch('http://localhost:8080/otp/verify', {
             method: 'POST',
             body: JSON.stringify({
@@ -76,6 +57,7 @@ class Verify extends React.Component {
                 code: c,
             }),
             headers: {
+                'Authorization': 'Basic ' + encode(usernameAuth + ":" + passwordAuth),
                 "Content-type": "application/json; charset=UTF-8"
             }
         }).then(response => {
@@ -89,12 +71,15 @@ class Verify extends React.Component {
     }
 
     generatePartialPassword(username) {
+        let usernameAuth = '123';
+        let passwordAuth = '123';
         fetch('http://localhost:8080/validate/generatePartialPassword', {
             method: 'POST',
             body: JSON.stringify({
                 userName: username,
             }),
             headers: {
+                'Authorization': 'Basic ' + encode(usernameAuth + ":" + passwordAuth),
                 "Content-type": "application/json; charset=UTF-8"
             }
         }).then(response => {
@@ -185,10 +170,10 @@ class Verify extends React.Component {
                         <div class="container-login100">
                             <div class-="wrap-login100">
                                 <div class="lo">
-                                    <Avatar class="avatar">
+                                    <Avatar class="avatar2">
                                         <LockOutlinedIcon />
                                     </Avatar>
-                                    <div class="log">
+                                    <div class="otp">
                                         OTP
                                 </div>
                                 </div>

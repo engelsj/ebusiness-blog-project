@@ -1,12 +1,8 @@
 import React, { Component } from "react";
-//import { Row, FormGroup, FormControl, ControlLabel, Button, FormText } from 'react-bootstrap';
 import './login.css';
 import { isEmail, isEmpty} from './validator';
-
 import { NavLink, } from "react-router-dom";
-
 import TextField from "@material-ui/core/TextField";
-
 import Avatar from '@material-ui/core/Avatar';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import './mylogin.css';
@@ -140,7 +136,7 @@ class Login extends Component {
             localStorage.setItem('login_status', '');
             const { formData } = this.state;
             localStorage.setItem('db_email', formData.email);
-            this.props.history.push('/dark')
+            this.props.history.push('/db')
         } else {
             this.setState({
                 errors: errors,
@@ -178,7 +174,7 @@ class Login extends Component {
                                 <div class="wrap-input100 validate-input "
                                     data-validate="username is required">
                                    
-                                    <TextField class="fields" type="text" name="password" placeholder="Enter your email" onChange={this.handleInputChange} />
+                                    <TextField class="fields" type="password" name="password" placeholder="Enter your password" onChange={this.handleInputChange} />
                                     {errors.password &&
                                         <div class="errors">{errors.password}</div>
                                     }
@@ -190,10 +186,10 @@ class Login extends Component {
                                 </button>
                                 </div>
                                 <div>
-                                <NavLink class="link" to="/Secure">do you not trust your device?</NavLink>
+                                <NavLink class="link" to="/Secure">On a untrusted device?</NavLink>
                                     </div>
                                 <div>
-                                    <NavLink class="link" to="/register">Dont have an account? Register </NavLink>
+                                    <NavLink class="link" to="/register">Don't have an account?</NavLink>
 </div>
                             </form>
 
@@ -209,10 +205,3 @@ class Login extends Component {
 }
 
 export default Login;
-
-
-
-
-
-
-/*<div className="Home">
