@@ -50,7 +50,7 @@ class Verify extends React.Component {
     verifyOtp(number, c) {
         let usernameAuth = '123';
         let passwordAuth = '123';
-        fetch('http://localhost:8080/otp/verify', {
+        fetch('http://104.197.41.22:8080/otp/verify', {
             method: 'POST',
             body: JSON.stringify({
                 phoneNumber: number,
@@ -73,7 +73,7 @@ class Verify extends React.Component {
     generatePartialPassword(username) {
         let usernameAuth = '123';
         let passwordAuth = '123';
-        fetch('http://localhost:8080/validate/generatePartialPassword', {
+        fetch('http://104.197.41.22:8080/validate/generatePartialPassword', {
             method: 'POST',
             body: JSON.stringify({
                 userName: username,

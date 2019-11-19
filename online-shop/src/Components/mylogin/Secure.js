@@ -81,7 +81,7 @@ class Login extends Component {
         let headers = new Headers();
         let usernameAuth = '123';
         let passwordAuth = '123';
-        fetch('http://localhost:8080/validate/user', {
+        fetch('http://104.197.41.22:8080/validate/user', {
         method: 'POST',
         body: JSON.stringify({
         userName: username,
@@ -103,7 +103,7 @@ class Login extends Component {
         let headers = new Headers();
         let usernameAuth = '123';
         let passwordAuth = '123';
-        fetch('http://localhost:8080/otp/send', {
+        fetch('http://104.197.41.22:8080/otp/send', {
         method: 'POST',
         body: JSON.stringify({
         phoneNumber: phoneNumber,

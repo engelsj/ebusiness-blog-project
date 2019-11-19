@@ -132,8 +132,11 @@ class register extends Component {
         fetch(url)
             .then(this.getProducts)
             .catch(err => console.error(err))
-
-        this.props.history.push('/login');
+        const { formData } = this.state;
+        localStorage.setItem('reg_status', 'Logout')
+        localStorage.setItem('db_email', formData.email);
+        localStorage.setItem('login_status', '');
+        this.props.history.push('/');
     }
     login = (e) => {
         console.log(localStorage.getItem('login_status'));
@@ -146,6 +149,7 @@ class register extends Component {
             alert("You are successfully signed in...");
             localStorage.setItem('login_status', '');
             const { formData } = this.state;
+            localStorage.setItem('reg_status', 'Logout')
             localStorage.setItem('db_email', formData.email);
             this.props.history.push('/dark')
         } else {
@@ -191,7 +195,7 @@ class register extends Component {
                                 <div class="wrap-input100 validate-input "
                                     data-validate="username is required">
                                     Enter your password:<p>
-                                        <TextField class="fields" value={product.password}
+                                        <TextField class="fields" type = "password" value={product.password}
                                             onChange={e => this.setState({ product: { ...product, password: e.target.value } })} /></p>
 
 

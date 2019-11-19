@@ -25,7 +25,6 @@ public class ValidateClient {
         // make some users instead of loading them from database
         AES aes = new AES();
         userHashMap = new HashMap<>();
-       
     }
 
     public String isUser(String userName) {

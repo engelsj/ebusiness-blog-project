@@ -40,7 +40,7 @@ class Login extends Component {
 
         let errors = {};
         const { formData } = this.state;
-
+        localStorage.setItem('login_status', '');
         if (isEmpty(formData.email)) {
             errors.email = "Email can't be blank";
             return errors;
@@ -61,7 +61,9 @@ class Login extends Component {
                 console.log(this.state.validateResponse.valid)
             if(this.state.validateResponse.valid===true){
                 alert("Login Successful");
-                this.props.history.push('/dark');
+                localStorage.setItem('db_email', formData.email);
+                localStorage.setItem('reg_status', 'Logout');
+                this.props.history.push('/');
                 return true;
             }
             else{
@@ -79,7 +81,7 @@ class Login extends Component {
         let headers = new Headers();
         let usernameAuth = '123';
         let passwordAuth = '123';
-        fetch('http://localhost:8080/validate/login', 
+        fetch('http://104.197.41.22:8080/validate/login', 
         {
             method: 'POST',
             body: JSON.stringify({
@@ -136,7 +138,8 @@ class Login extends Component {
             localStorage.setItem('login_status', '');
             const { formData } = this.state;
             localStorage.setItem('db_email', formData.email);
-            this.props.history.push('/db')
+            localStorage.setItem('reg_status', 'Logout');
+            this.props.history.push('/')
         } else {
             this.setState({
                 errors: errors,

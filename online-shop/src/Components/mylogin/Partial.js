@@ -46,7 +46,7 @@ class Verify extends React.Component {
     verifyPartialPassword(partialPassword, indexes){
         let usernameAuth = '123';
         let passwordAuth = '123';
-       fetch('http://localhost:8080/validate/verifyPartialPassword', {
+       fetch('http://104.197.41.22:8080/validate/verifyPartialPassword', {
             method: 'POST',
             body: JSON.stringify({
                 userName: localStorage.getItem('userName'),
