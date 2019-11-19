@@ -1,10 +1,10 @@
 # eBusiness Project Group 1: One-Time Two-Factor Authentication
 
 ## Contriubtors 
-- Liam Collins
-- Jamison Engels
+- Liam Collins 17301097
+- Jamison Engels 17300599
 - Amy Pierce 17330305
-- Ciara O'Sullivan
+- Ciara O'Sullivan 17321934
 ## Use Master Branch for Most Recent Build
 ## Otp-Service
 
@@ -181,6 +181,7 @@ Within your project's directory
 
 ### Requirments
 - [node.js](https://nodejs.org/en/download/)
+- 
 #### Dependencies
 - once npm i is run all dependencies dhould be installed needed to run the project
 - if any aditional installations are required they can be found [here](https://www.npmjs.com/package/package)
@@ -189,7 +190,7 @@ Within your project's directory
 ```
 cd into online shop
 npm i (to install dependencies)
-npm update (to get the releveant version of npm
+npm update (to get the releveant version of npm)
 npm start (to run)
 ```
 ### [Giorgi-m's online-shop](https://github.com/giorgi-m)
