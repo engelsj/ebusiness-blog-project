@@ -184,17 +184,15 @@ Within your project's directory
 #### Dependencies
 - once npm i is run all dependencies dhould be installed needed to run the project
 - if any aditional installations are required they can be found [here](https://www.npmjs.com/package/package)
-
-
-
 ### Usage
 Within your project's directory 
 ```
 cd into online shop
 npm i (to install dependencies)
+npm update (to get the releveant version of npm
 npm start (to run)
 ```
-### User Interface
+### [Giorgi-m's online-shop](https://github.com/giorgi-m)
 -for this project we decided to intergrate our login feature into an already developed react.js application. We used a online-shop application that can be gound on [giorgi-m's](https://github.com/giorgi-m/online-shop?fbclid=IwAR3LIAWiNSmhDrND2gkn0J8DgDUS9wG8azRLAf46fqVd29fSMTXhUK1Ezx0) github.
 - WE decided it would be most interesting to show how our one time two factor authentication app is fully functional and easily intergrated into real websites.
 -[Giorgi-m's](https://github.com/giorgi-m) application that we took from github we decided to use offered us teh perfect way to show off the functionality of our feature. 
@@ -248,10 +246,11 @@ will generate an output like:
 |    xxxxxxxxx | Liam      | Password  |
 |    xxxxxxxxx | Amy       | Computers |
 |    xxxxxxxxx | Ciara     | BeepBoop  |
-|    xxxxxxxxx | Luke      | Feely     |
+|    xxxxxxxxx | Jack      | SWENG1    |
 +--------------+-----------+-----------+
 4 rows in set (0.01 sec)
 ```
+
 #### xmysql & REST
 ##### Installation
 Install with node package in command line
@@ -283,6 +282,35 @@ Will create an output like:
 ```
 This output means the API's have generated approtiatly. There are many commands that can be accessed via https://github.com/o1lab/xmysql
 The strength of xmysql is that it generates all the applicable REST API's one can use on the selected database. 
+
+### Database on local host
+We were able to connect our app to the database we created over local host using the 'fetch' command in the front
+
+#### Add User
+- to register a user (email=student@tcd.ie,password=Trinity, phone number=123456789) and add them to the data base:
+```
+fetch('http://localhost:4000/users/add?email=' + user.email + '&password=' + user.password + '&phone_number=' + user.phone_number)
+
+```
+This then connects with  server and  sends an SQL query
+```
+'INSERT INTO accounts (email,password,phone_number) VALUES(email,password,phone_number)'
+```
+and the user is successfully added to the database 
+#### Find User (Assuming user exists with credentials: (email=student@tcd.ie,password=Trinity, phone number=123456789))
+
+- to find student@tcd.ie in the database and get their password and phone number:
+```
+fetch('http://localhost:4000/products/find?email=email')
+
+```
+This then connects with server and sends an SQL query
+```
+ 'SELECT password,phone_number FROM accounts WHERE email=email'
+```
+and a json will be returned containing that users password(Trinity) and phone number (123456789) 
+
+
 ####
 
 MIT License 
