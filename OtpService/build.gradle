@@ -1,6 +1,7 @@
 plugins {
     id "net.ltgt.apt-eclipse" version "0.21"
     id "com.github.johnrengelman.shadow" version "5.0.0"
+    id 'com.google.cloud.tools.jib' version '1.6.1'
     id "application"
 }
 
@@ -39,6 +40,7 @@ dependencies {
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"
     compileOnly 'org.projectlombok:lombok:1.18.10'
     annotationProcessor 'org.projectlombok:lombok:1.18.10'
+    compile "io.micronaut:micronaut-security"
 }
 
 test.classpath += configurations.developmentOnly

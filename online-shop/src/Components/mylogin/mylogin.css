@@ -1,0 +1,85 @@
+.l {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.lo {
+    height: 100px;
+    width: 200px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+ }
+.log {
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+    margin-left: 90px;
+    width:350px;
+}
+
+.otp{
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    text-align: center;
+    margin-left: 0px;
+    width:350px;
+}
+
+.sub_heading{
+    font-size:12px;
+    margin-bottom:100px;
+    margin-left:100px;
+    width:300px;
+    color:forestgreen;
+    font-weight:bold;
+    text-align:center;
+}
+.avatar {
+    margin-bottom: 10px;
+    justify-content: center;
+    margin-left:90px;
+    text-align: center;
+}
+
+.avatar2 {
+    margin-bottom: 10px;
+    justify-content: center;
+    margin-left:0px;
+    text-align: center;
+}
+
+TextField.placeholder{
+    text-align:center;
+}
+
+.link {
+    font-size: 18px;
+    text-align: center;
+    margin-left:60px;
+    width:70%;
+}
+
+.externalLink{
+    font-size: 18px;
+    text-align: center;
+    margin-left:40px;
+    width:70%;
+}
+.fields {
+    font-size: 18px;
+    text-align: center;
+   margin-top:10px;
+    
+}
+
+.user{
+    color:black;
+    font-size:10px;
+}
