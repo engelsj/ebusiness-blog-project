@@ -250,6 +250,10 @@ iframe {
     margin-bottom: 10px;
 }
 
+.login100-form validate-form{
+   
+    margin-left:10px;
+}
 .input100 {
     font-family: Poppins-Medium;
     font-size: 15px;
