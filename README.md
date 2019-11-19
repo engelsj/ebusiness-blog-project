@@ -3,7 +3,7 @@
 ## Contriubtors 
 - Liam Collins
 - Jamison Engels
-- Amy Pierce 
+- Amy Pierce 17330305
 - Ciara O'Sullivan
 ## Use Master Branch for Most Recent Build
 ## Otp-Service
@@ -285,6 +285,40 @@ The strength of xmysql is that it generates all the applicable REST API's one ca
 
 ### Database on local host
 We were able to connect our app to the database we created over local host using the 'fetch' command in the front
+### Requirements
+mySQL workbench
+### Usage
+#### Database setup
+- assuming you have the required [MySQL Community Server 8.0](https://dev.mysql.com/downloads/mysql/) installed, you can set up a data base with the following schema
+```
+CREATE TABLE `simple-react-sql-db`.`accounts` (
+  `email` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `phone_number` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`email`),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE);
+
+```
+- you will then have to open the user-server file and change the connection to match your database
+```
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: '<your sql password>',
+    database: '<your databse name>'
+});
+
+```
+
+- a separate terminal must be opened and in your project directory
+```
+cd into user-server
+nodemon
+```
+you can then go to localhost:4000/users to view the json of the database returned from SQL query
+```
+'SELECT * FROM accounts'
+```
 
 #### Add User
 - to register a user (email=student@tcd.ie,password=Trinity, phone number=123456789) and add them to the data base:
