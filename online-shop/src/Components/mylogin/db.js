@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import './mylogin.css';
 let x;
 var st = "";
-let j="whopper";
 
-class db extends React.Component {
+class App extends React.Component {
+
     state = {
         products: [],
         product: {
-            email: "",
+            email: '',
             password: '',
             phone_number: ''
 
@@ -54,15 +54,12 @@ class db extends React.Component {
 
     addProduct = _ => {
         const { product } = this.state;
-        // console.log(product.name);
-        const url = 'http://localhost:4000/products/find?email=amypi@eircom.net';
+        console.log(product.price);
+        const url = 'http://localhost:4000/products/add?price=' + product.price + '&name=' + product.name;
         fetch(url)
-            .then(res => res.json())
-            .then((response) => { j = (response.data[0].password) })
-
             .then(this.getProducts)
             .catch(err => console.error(err))
-        console.log(j);
+
     }
     //onClick() {
     //    fetch('http://localhost:4000/products')
@@ -71,18 +68,21 @@ class db extends React.Component {
     //}
 
     onClick() {
-        const { product } = this.state;
-        console.log(product.email);
-        const url = 'http://localhost:4000/products/find?name=' + product.email;
+        // console.log(product.email);
+        var m = localStorage.getItem('db_email');
+        const url = 'http://localhost:4000/products/find?email=' + m;
         fetch(url)
             .then(res => res.json())
-            .then((response) => { console.log("yeet"); })
+            .then((response) => {
+              //  localStorage.setItem('db_password', response.data[0].password);
+                //localStorage.setItem('db_number', response.data[0].phone_number);
+                console.log(localStorage.getItem('db_email') + localStorage.getItem('db_password') + localStorage.getItem('db_number') );
+            })
     }
     renderProduct = ({ email, password, phone_number }) => <div key={email}  >{password},{phone_number} </div>
 
     render() {
         const { products, product } = this.state;
-        console.log("wow" + j);
 
         return (
             <div className="App">
@@ -90,19 +90,18 @@ class db extends React.Component {
 
 
                 {products.map(this.renderProduct)}
-                <div><input value={product.price}
-                    onChange={e => this.setState({ product: { ...product, price: e.target.value } })} />
-                    <input value={product.name}
-                        onChange={e => this.setState({ product: { ...product, name: e.target.value } })} />
+                <div><input value={product.email}
+                    onChange={e => this.setState({ product: { ...product, email: e.target.value } })} />
+                    <input value={product.password}
+                        onChange={e => this.setState({ product: { ...product, password: e.target.value } })} />
 
 
-                    <button onClick={this.addProduct(product.email)}>Add product</button>
-                    <div>
-                        {j}
-                        </div>
-                </div>
+                    <button onClick={this.onClick}>Add product</button> 
+                    </div>
+                {localStorage.getItem('db_password')}
+                {localStorage.getItem('db_number')}
 
             </div>
         );
     }
-} export default db;
+} export default App;
