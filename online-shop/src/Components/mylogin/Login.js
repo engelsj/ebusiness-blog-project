@@ -1,20 +1,22 @@
 import React, { Component } from "react";
 //import { Row, FormGroup, FormControl, ControlLabel, Button, FormText } from 'react-bootstrap';
 import './login.css';
-import { isEmail, isEmpty, isLength, isContainWhiteSpace } from './validator';
-import Loginlogo from './login.png';
+import { isEmail, isEmpty} from './validator';
+
 import { NavLink, } from "react-router-dom";
-import { withRouter, Redirect } from "react-router-dom";
-import { connect } from "react-redux";
-import Auth from "../../Auth";
+
 import TextField from "@material-ui/core/TextField";
-import Button from "@material-ui/core/Button";
-import { setLoggedInUser } from "../../Redux/Actions";
+
 import Avatar from '@material-ui/core/Avatar';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import './mylogin.css';
+<<<<<<< HEAD
 import db from './db';
+import { encode } from "base-64";
+=======
 
+
+>>>>>>> 81977c3206e027431cce17ce817c453a7302b0b4
 
 class Login extends Component {
     constructor(props) {
@@ -66,6 +68,7 @@ class Login extends Component {
         {
             this.validateUser(formData.email, formData.password);
             setTimeout(()=>{
+                console.log(this.state.validateResponse.valid)
             if(this.state.validateResponse.valid===true){
                 alert("Login Successful");
                 this.props.history.push('/dark');
@@ -84,22 +87,32 @@ class Login extends Component {
     
     validateUser(username, password) {
         let headers = new Headers();
-        fetch('http://localhost:8080/validate/login', {
-        method: 'POST',
-        body: JSON.stringify({
-        userName: username,
-        password: password,
-      }),
-      headers: {
-        "Content-type": "application/json; charset=UTF-8"
-      }
-    }).then(response => {
-        return response.json()
-      }).then(json => {
-        this.setState({
-          validateResponse:json
+        let usernameAuth = '123';
+        let passwordAuth = '123';
+        fetch('http://localhost:8080/validate/login', 
+        {
+            method: 'POST',
+            body: JSON.stringify({
+            userName: username,
+            password: password,
+        }),
+        headers: 
+        {
+            'Authorization': 'Basic ' + encode(usernameAuth + ":" + passwordAuth),
+            "Content-type": "application/json; charset=UTF-8"
+        }
+        }).then(response => 
+        {
+            if(response !== null)
+                return response.json()
+            else
+                alert("Service unable to respond")
+        }).then(json => {
+            this.setState({
+            validateResponse:json
         });
       });
+
     }
 
     check() {
@@ -122,15 +135,18 @@ class Login extends Component {
 
 
     login = (e) => {
+        console.log(localStorage.getItem('login_status'));
+        localStorage.setItem('login_status', '');
 
         e.preventDefault();
         let errors = this.validateLoginForm();
 
         if (errors === true) {
             alert("You are successfully signed in...");
+            localStorage.setItem('login_status', '');
+            const { formData } = this.state;
+            localStorage.setItem('db_email', formData.email);
             this.props.history.push('/dark')
-
-
         } else {
             this.setState({
                 errors: errors,
@@ -140,63 +156,62 @@ class Login extends Component {
     }
 
     render() {
-
-        const { errors, formSubmitted } = this.state;
-
+        const { errors } = this.state;
         return (
-           
-
-                    
-                        
-                        
-         
-            <body>
-                
+            <div>
                 <div class="limiter">
                     <div class="container-login100">
                         <div class-="wrap-login100">
-                          
-                                <div class="lo">
-                            <Avatar class="avatar">
-                                <LockOutlinedIcon />
-                            </Avatar>
-                            <div class="log">
-                                Log in
+                            <div class="lo">
+                                <Avatar class="avatar">
+                                    <LockOutlinedIcon />
+                                </Avatar>
+                                <div class="log">
+                                    Login
                                 </div>
-                                </div>
-                            <form className="login100-form validate-form"  onSubmit={this.login}>
-                               
+                            </div>
+                            <form className="login100-form validate-form" onSubmit={this.login}>
 
-                                    <div class="wrap-input100" controlId="email" validationState={formSubmitted ? (errors.email ? 'error' : 'success') : null}>
+                                <div class="wrap-input100 validate-input "
+                                    data-validate="username is required">
 
-                                        <input class="input100" type="text" name="email" placeholder="Enter your email" onChange={this.handleInputChange} />
-                                        {errors.email &&
+                                    <TextField class="fields" type="text" name="email" placeholder="Enter your email" onChange={this.handleInputChange} />
+                                    {errors.email &&
                                         <div class="errors">{errors.email}</div>
-                                        }
-                                    </div>
-                                    <div controlId="password" validationState={formSubmitted ? (errors.password ? 'error' : 'success') : null}>
+                                    }
+                                   
 
-                                        <input class="input100" type="password" name="password" placeholder="Enter your password" onChange={this.handleInputChange} />
+                                </div>
+                                <div class="wrap-input100 validate-input "
+                                    data-validate="username is required">
+
+                                   
+                                    <TextField class="fields" type="text" name="password" placeholder="Enter your email" onChange={this.handleInputChange} />
                                     {errors.password &&
-                                        
                                         <div class="errors">{errors.password}</div>
-                                        }
-                                    </div>
+                                    }
+
+                                </div>
                                 <div class="container-login100-form-btn">
                                     <button class="login100-form-btn" >
                                         Login
                                 </button>
                                 </div>
-                                {db.j}
-                                <NavLink to="/Secure">do you not trust your device?</NavLink>
-                                {console.log(db.j)}
-                                
+                                <div>
+                                <NavLink class="link" to="/Secure">do you not trust your device?</NavLink>
+                                    </div>
+                                <div>
+                                    <NavLink class="link" to="/register">Dont have an account? Register </NavLink>
+</div>
                             </form>
-                            
+
                         </div>
+
                     </div>
+
                 </div >
-            </body>
+
+            </div>
         )
     }
 }

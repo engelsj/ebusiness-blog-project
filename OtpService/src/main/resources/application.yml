@@ -1,4 +1,9 @@
 micronaut:
+  security:
+    enabled: true
+    endpoints:
+      login:
+        enabled: true
   application:
     name: otpservice
   server:

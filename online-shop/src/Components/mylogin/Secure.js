@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { FormText } from 'react-bootstrap';
 import { isEmail, isEmpty } from './validator';
 //import './login.css';
 import './mylogin.css';
-import Button from "@material-ui/core/Button";
+import { NavLink, } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 import Avatar from '@material-ui/core/Avatar';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import { encode } from "base-64";
 
 class Login extends Component {
 
@@ -43,6 +43,7 @@ class Login extends Component {
 
         let errors = {};
         const { formData } = this.state;
+        
 
         if (isEmpty(formData.email)) {
             errors.email = "Email can't be blank";
@@ -78,12 +79,15 @@ class Login extends Component {
 
     validateUser(username) {
         let headers = new Headers();
+        let usernameAuth = '123';
+        let passwordAuth = '123';
         fetch('http://localhost:8080/validate/user', {
         method: 'POST',
         body: JSON.stringify({
         userName: username,
       }),
       headers: {
+        'Authorization': 'Basic ' + encode(usernameAuth + ":" + passwordAuth),
         "Content-type": "application/json; charset=UTF-8"
       }
     }).then(response => {
@@ -97,12 +101,15 @@ class Login extends Component {
 
     sendOTP(phoneNumber) {
         let headers = new Headers();
+        let usernameAuth = '123';
+        let passwordAuth = '123';
         fetch('http://localhost:8080/otp/send', {
         method: 'POST',
         body: JSON.stringify({
         phoneNumber: phoneNumber,
       }),
       headers: {
+        'Authorization': 'Basic ' + encode(usernameAuth + ":" + passwordAuth),
         "Content-type": "application/json; charset=UTF-8"
       }
     }).then(response => {
@@ -132,24 +139,37 @@ class Login extends Component {
         })
     }
 
-
+    onClick() {
+        // console.log(product.email);
+        var m = localStorage.getItem('db_email');
+        const url = 'http://localhost:4000/products/find?email=' + m;
+        fetch(url)
+            .then(res => res.json())
+            .then((response) => {
+                localStorage.setItem('db_password', response.data[0].password);
+                localStorage.setItem('db_number', response.data[0].phone_number);
+                console.log(localStorage.getItem('db_email'));
+            })
+    }
     login = (e) => {
-
+        const { formData } = this.state;
+        localStorage.setItem('db_email', formData.email);
+        this.onClick();
         e.preventDefault();
-        let errors = this.validateLoginForm();
+        //NEEEEEEEDDDDDD TTTTTHHHHHIIIIISSSSSSSSS
+        //let errors = this.validateLoginForm();
+        //if (errors === true) {
+        //    alert("You are successfully signed in...");
+        //    this.props.history.push('/Verify')
 
-        if (errors === true) {
-            alert("You are successfully signed in...");
-            this.props.history.push('/Verify')
 
-
-        } else {
+        //} else {
            
-            this.setState({
-                errors: errors,
-                formSubmitted: true
-            });
-        }
+        //    this.setState({
+        //        errors: errors,
+        //        formSubmitted: true
+        //    });
+        //}
     }
 
     render() {
@@ -169,12 +189,12 @@ class Login extends Component {
                                     Secure Login
                                 </div>
                             </div>
-                            <form className="lo" onSubmit={this.login}>
+                            <form class="login100-form validate-form" onSubmit={this.login}>
                                 
                                 <div class="wrap-input100 validate-input "
                                     data-validate="username is required">
 
-                                    <TextField type="text" name="email" placeholder="Enter your email" onChange={this.handleInputChange} />
+                                    <TextField class="fields"type="text" name="email" placeholder="Enter your email" onChange={this.handleInputChange} />
                                     {errors.email &&
                                         <div class="errors">{errors.email}</div>
                                     }
@@ -190,6 +210,12 @@ class Login extends Component {
                                         Login
                                 </button>
                                 </div>
+                                <a 
+                                    href="https://www.getsafeonline.org/protecting-yourself/using-public-computers/"
+                                   
+                                >
+                                    <div class="link">Click here for more information on secure authentication</div>
+                                </a>
                             </form>
                         </div>
                     </div>
@@ -276,9 +302,6 @@ class Login extends Component {
         } else if (!isEmail(formData.email)) {
             errors.email = "Please enter a valid email";
         }
-
-
-
         if (isEmpty(errors)) {
             return true;
         } else {

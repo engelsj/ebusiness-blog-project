@@ -4,9 +4,11 @@ import Model.*;
 import Service.ValidateService;
 import io.micronaut.http.MediaType;
 import io.micronaut.http.annotation.*;
+import io.micronaut.security.annotation.Secured;
 
 import javax.inject.Inject;
 
+@Secured("isAuthenticated()")
 @Controller("/validate")
 public class ValidateController {
 

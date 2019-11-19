@@ -1,8 +1,10 @@
 import React from 'react';
 import './login.css';
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 
+import Avatar from '@material-ui/core/Avatar';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import TextField from "@material-ui/core/TextField";
+import { encode } from "base-64";
 
 var code_to_Verify = "no number entered yet";
 
@@ -29,8 +31,13 @@ class Verify extends React.Component {
        fullPartial = fullPartial.concat(x,y,z);
        this.verifyPartialPassword(fullPartial,fullIndexes);
        setTimeout(()=>{
-            if(this.state.verifyPartialPasswordResponse.valid === true)
-                alert("Login")
+           if (this.state.verifyPartialPasswordResponse.valid === true) {
+
+               localStorage.setItem('login_status', 'Logout');
+               alert("Login")
+               this.props.history.push('/dark')
+
+           }
             else
                 alert("Not login")
        },3000);
@@ -38,6 +45,8 @@ class Verify extends React.Component {
     }
 
     verifyPartialPassword(partialPassword, indexes){
+        let usernameAuth = '123';
+        let passwordAuth = '123';
        fetch('http://localhost:8080/validate/verifyPartialPassword', {
             method: 'POST',
             body: JSON.stringify({
@@ -46,7 +55,8 @@ class Verify extends React.Component {
                 indexes: indexes
             }),
             headers: {
-                "Content-type": "application/json; charset=UTF-8"
+                "Content-type": "application/json; charset=UTF-8",
+                'Authorization': 'Basic ' + encode(usernameAuth + ":" + passwordAuth)
             }
         }).then(response => {
             return response.json()
@@ -59,14 +69,19 @@ class Verify extends React.Component {
 
     handleX(event) {
         x = event.target.value;
+        event.target.value = "*";
+
     }
 
     handleY(event) {
         y = event.target.value;
+        event.target.value = "*";
+
     }
 
     handleZ(event) {
         z = event.target.value;
+        event.target.value = "*";
     }
 
 
@@ -77,15 +92,25 @@ class Verify extends React.Component {
                 <div class="limiter">
                     <div class="container-login100">
                         <div class-="wrap-login100">
+                            <div class="lo">
+                                <Avatar class="avatar">
+                                    <LockOutlinedIcon />
+                                </Avatar>
+                                <div class="log">
+                                    Please enter the specified indexes of your password
+                                </div>
+                                <div class="sub_heading">For security reasons we would like you to only enter a partial password,
+                                    this is to prevent keystroke loggers from obtaining your full password</div>
+                            </div>
                             <form className="login100-form validate-form" onSubmit={this.handleSubmit}>
                                 <div class="wrap-input100"ontrolId="index1" >
-                                   Enter Index {localStorage.getItem('index1')} of Your Password:<p> <TextField  type="text" cnumber={''} placeholder="enter the number" onChange={this.handleX} /></p>
+                                    Enter Index {localStorage.getItem('index1')} of Your Password:<p> <TextField class="fields" type="text" cnumber={''} placeholder="enter the number" onChange={this.handleX} /></p>
                                 </div>
                                 <div class="wrap-input100"controlId="index2" >
-                                    Enter Index {localStorage.getItem('index2')} of Your Password:<p> <TextField  type="text"  number={''} placeholder="enter the number" onChange={this.handleY} /></p>
+                                    Enter Index {localStorage.getItem('index2')} of Your Password:<p> <TextField class="fields" type="text"  number={''} placeholder="enter the number" onChange={this.handleY} /></p>
                                 </div>
                                 <div class="wrap-input100"controlId="index3"  >
-                                    Enter Index {localStorage.getItem('index3')} of Your Password:<p> <TextField  type="text" number={''} placeholder="enter the number" onChange={this.handleZ} /></p>
+                                    Enter Index {localStorage.getItem('index3')} of Your Password:<p> <TextField class="fields" type="text" number={''} placeholder="enter the number" onChange={this.handleZ} /></p>
                                 </div>
                                 <div class="container-login100-form-btn">
                                     <div class="container-login100-form-btn">

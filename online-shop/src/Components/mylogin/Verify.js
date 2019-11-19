@@ -197,7 +197,7 @@ class Verify extends React.Component {
                                     <div class="wrap-input100 validate-input "
                                         data-validate="username is required">
 
-                                        <TextField type="text" name="code" placeholder="Verification code" onChange={this.handleInputChange} />
+                                        <TextField class="fields"type="text" name="code" placeholder="Verification code" onChange={this.handleInputChange} />
                                         {errors.code &&
                                             <div class="errors">{errors.code}</div>
                                         }
@@ -228,5 +228,6 @@ class Verify extends React.Component {
     }
 
 }
+
 
 export default Verify

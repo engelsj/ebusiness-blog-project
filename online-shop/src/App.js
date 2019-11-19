@@ -15,6 +15,8 @@ import Home from './Components/mylogin/Home';
 import Secure from './Components/mylogin/Secure';
 import Partial from './Components/mylogin/Partial';
 import db from './Components/mylogin/db';
+import register from './Components/mylogin/register';
+
 
 
 import Verify from './Components/mylogin/Verify';
@@ -38,6 +40,8 @@ class App extends Component {
                         <Route path="/Partial" component={Partial} />
                         <Route path="/Secure" component={Secure} />
                         <Route path="/db" component={db} />
+                        <Route path="/register" component={register} />
+
 
                       
               <ProtectedRoute path="/order" component={Order} />
