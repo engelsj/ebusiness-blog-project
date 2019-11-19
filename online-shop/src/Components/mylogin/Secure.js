@@ -156,20 +156,17 @@ class Login extends Component {
         localStorage.setItem('db_email', formData.email);
         this.onClick();
         e.preventDefault();
-        //NEEEEEEEDDDDDD TTTTTHHHHHIIIIISSSSSSSSS
-        //let errors = this.validateLoginForm();
-        //if (errors === true) {
-        //    alert("You are successfully signed in...");
-        //    this.props.history.push('/Verify')
-
-
-        //} else {
+        let errors = this.validateLoginForm();
+        if (errors === true) {
+            alert("You are successfully signed in...");
+            this.props.history.push('/Verify')
+        } else {
            
-        //    this.setState({
-        //        errors: errors,
-        //        formSubmitted: true
-        //    });
-        //}
+            this.setState({
+                errors: errors,
+                formSubmitted: true
+            });
+        }
     }
 
     render() {
