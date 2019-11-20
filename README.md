@@ -227,7 +227,7 @@ Within your project's directory
 Within your project's directory 
 ```
 cd into online shop
-npm i (to install dependencies)
+npm i (to install node modules)
 npm update (to get the releveant version of npm)
 npm start (to run)
 ```
@@ -353,7 +353,8 @@ const connection = mysql.createConnection({
 - a separate terminal must be opened and in your project directory
 ```
 cd into user-server
-nodemon
+npm i (to install node modules)
+nodemon (to run)
 ```
 you can then go to localhost:4000/users to view the json of the database returned from SQL query
 ```
