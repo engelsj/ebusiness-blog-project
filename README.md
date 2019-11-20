@@ -189,7 +189,7 @@ Within your project's directory
 
 ### Requirments
 - [node.js](https://nodejs.org/en/download/)
-- 
+
 #### Dependencies
 - once npm i is run all dependencies dhould be installed needed to run the project
 - if any aditional installations are required they can be found [here](https://www.npmjs.com/package/package)
