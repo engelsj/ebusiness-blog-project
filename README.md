@@ -1,4 +1,4 @@
-# eBusiness Project Group 1: One-Time Two-Factor Authentication
+# eBusiness CSU33BC1 Project Group 1: One-Time Two-Factor Authentication
 
 ## Contriubtors 
 - Liam Collins 17301097
