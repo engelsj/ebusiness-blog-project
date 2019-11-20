@@ -224,11 +224,18 @@ Within your project's directory
 - once npm i is run all dependencies dhould be installed needed to run the project
 - if any aditional installations are required they can be found [here](https://www.npmjs.com/package/package)
 ### Usage
-Within your project's directory 
+- Open node.js command prompt and within your project's directory 
 ```
 cd into online shop
 npm i (to install node modules)
 npm update (to get the releveant version of npm)
+npm start (to run)
+```
+- if you get errors after running the abloove commands, you may need to remove the node modules from the online-shop folder and re-install them
+- in the online-shop directory on node.js command prompt run
+```
+npm i (to re-install node modules)
+npm install base-64 (to install base-64 encoder)
 npm start (to run)
 ```
 ### [Giorgi-m's online-shop](https://github.com/giorgi-m)
