@@ -375,7 +375,7 @@ and the user is successfully added to the database
 
 - to find student@tcd.ie in the database and get their password and phone number:
 ```
-fetch('http://localhost:4000/products/find?email=email')
+fetch('http://localhost:4000/users/find?email=email')
 
 ```
 This then connects with server and sends an SQL query
