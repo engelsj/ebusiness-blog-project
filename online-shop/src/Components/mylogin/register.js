@@ -25,7 +25,7 @@ class register extends Component {
             formSubmitted: false, // Indicates submit status of login form
             loading: false, // Indicates in progress state of login form
             validateResponse: [],
-            product: {
+            user: {
                 email: '',
                 password: '',
                 phone_number: ''
@@ -124,13 +124,13 @@ class register extends Component {
         })
     }
 
-    addProduct = _ => {
-        const { product } = this.state;
-        //console.log(product.email);
-        const url = 'http://localhost:4000/products/add?email=' + product.email + '&password=' + product.password + '&phone_number=' + product.phone_number;
+    addUser = _ => {
+        const { user } = this.state;
+
+       const url = 'http://localhost:4000/users/add?email=' + user.email + '&password=' + user.password + '&phone_number=' + user.phone_number;
         console.log(url);
         fetch(url)
-            .then(this.getProducts)
+            .then(this.getUsers)
             .catch(err => console.error(err))
         const { formData } = this.state;
         localStorage.setItem('reg_status', 'Logout')
@@ -159,16 +159,9 @@ class register extends Component {
             });
         }
     }
-    hide() {
-        let star = "";
-        const { product } = this.state;
-        for (let i = 0; i < product.password.length; i++) {
-            star += '*';
-        }
-        return star;
-    }
+   
     render() {
-        const { products, product } = this.state;        return (
+        const { users, user } = this.state;        return (
             <div>
                 <div class="limiter">
                     <div class="container-login100">
@@ -181,13 +174,13 @@ class register extends Component {
                                     Register
                                 </div>
                             </div>
-                            <form className="login100-form validate-form" onSubmit={this.addProduct}>
+                            <form className="login100-form validate-form" onSubmit={this.addUser}>
 
                                 <div class="wrap-input100 validate-input "
                                     data-validate="username is required">
                                 Enter your email:<p>
-                                        <TextField class="fields" value={product.email}
-                                        onChange={e => this.setState({ product: { ...product, email: e.target.value } })} /></p>
+                                        <TextField class="fields" value={user.email}
+                                        onChange={e => this.setState({ user: { ...user, email: e.target.value } })} /></p>
                                     
 
 
@@ -195,8 +188,8 @@ class register extends Component {
                                 <div class="wrap-input100 validate-input "
                                     data-validate="username is required">
                                     Enter your password:<p>
-                                        <TextField class="fields" type = "password" value={product.password}
-                                            onChange={e => this.setState({ product: { ...product, password: e.target.value } })} /></p>
+                                        <TextField class="fields" type = "password" value={user.password}
+                                            onChange={e => this.setState({ user: { ...user, password: e.target.value } })} /></p>
 
 
 
@@ -205,8 +198,8 @@ class register extends Component {
                                 <div class="wrap-input100 validate-input "
                                     data-validate="username is required">
                                     Enter your phone number:<p>
-                                        <TextField class="fields" value={product.phone_number}
-                                            onChange={e => this.setState({ product: { ...product, phone_number: e.target.value } })} /></p>
+                                        <TextField class="fields" value={user.phone_number}
+                                            onChange={e => this.setState({ user: { ...user, phone_number: e.target.value } })} /></p>
 
 
 
