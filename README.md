@@ -203,9 +203,10 @@ npm start (to run)
 ```
 ### [Giorgi-m's online-shop](https://github.com/giorgi-m)
 -for this project we decided to intergrate our login feature into an already developed react.js application. We used a online-shop application that can be gound on [giorgi-m's](https://github.com/giorgi-m/online-shop?fbclid=IwAR3LIAWiNSmhDrND2gkn0J8DgDUS9wG8azRLAf46fqVd29fSMTXhUK1Ezx0) github.
-- WE decided it would be most interesting to show how our one time two factor authentication app is fully functional and easily intergrated into real websites.
+- We decided it would be most interesting to show how our one time two factor authentication app is fully functional and easily intergrated into real websites.
 -[Giorgi-m's](https://github.com/giorgi-m) application that we took from github we decided to use offered us teh perfect way to show off the functionality of our feature. 
 -The login and registration functioanlity was created by ourselves and worked into the already created react.js app but It would also be possible to remove it from the online-shop app and still be a fully functional react.js application with minor and easy changes
+
 ## Database
 
 ### Requirments
