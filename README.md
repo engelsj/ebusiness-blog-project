@@ -15,12 +15,27 @@ Our goal was to develop a program where a user can login without entering their 
 
 ## [Site Demo](https://ebusiness-project.herokuapp.com/)
 
-## To Run Locally - Short Explanation 
+## To Run Locally - Short Explanation
+- First read each header before to understand how each part of project work
 - Obtain Twillio credentials 
 - Setup Otp-Service and configure Micronaut to run your microservice locally 
+```
+./gradlew run
+```
 - Setup frontend and fill in all API calls to the backend with your localhost
+```
+npm i 
+npm update 
+```
 - Setup and configure database and configure your frontend database calls
-- Spin out the all of these programs at the same time and run ```npm start ``` to start your website
+```
+npm install -g xmysql
+xmysql -h localhost -u mysqlUsername -p mysqlPassword -d databaseName
+```
+- Spin out the all of these programs at the same time and run to start your website
+```
+npm start
+```
 
 ## To Run Deploy - Short Explanation
 - [Learn how to deploy a microservice to Google cloud](https://codelabs.developers.google.com/codelabs/cloud-micronaut-kubernetes/index.html?index=..%2F..index#9)
