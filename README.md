@@ -7,6 +7,7 @@
 - Ciara O'Sullivan 17321934
 ## Use Master Branch for Most Recent Build
 
+## [Video of our prototype](https://www.youtube.com/watch?v=TT4H4aYJW3A&feature=youtu.be)
 ## To Run Locally - Short Explanation 
 - Obtain Twillio credentials 
 - Setup Otp-Service and configure Micronaut to run your microservice locally 
