@@ -37,7 +37,7 @@ xmysql -h localhost -u mysqlUsername -p mysqlPassword -d databaseName
 npm start
 ```
 
-## To Run Deploy - Short Explanation
+## To Deploy - Short Explanation
 - [Learn how to deploy a microservice to Google cloud](https://codelabs.developers.google.com/codelabs/cloud-micronaut-kubernetes/index.html?index=..%2F..index#9)
 - [Learn how to setup a website with Heroku](https://dashboard.heroku.com/apps)
 
