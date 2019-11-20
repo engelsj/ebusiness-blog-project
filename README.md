@@ -7,12 +7,19 @@
 - Ciara O'Sullivan 17321934
 ## Use Master Branch for Most Recent Build
 
-## To Run Locally - Short explanation 
+## To Run Locally - Short Explanation 
 - Obtain Twillio credentials 
 - Setup Otp-Service and configure Micronaut to run your microservice locally 
 - Setup frontend and fill in all API calls to the backend with your localhost
 - Setup and configure database and configure your frontend database calls
 - Spin out the all of these programs at the same time and run ```npm start ``` to start your website
+
+## To Run Deploy - Short Explanation
+- [Learn how to deploy a microservice to Google cloud] (https://codelabs.developers.google.com/codelabs/cloud-micronaut-kubernetes/index.html?index=..%2F..index#9)
+- [Learn how to setup a website with Heroku] (https://dashboard.heroku.com/apps)
+
+## Known Issues
+- When deploying to Google cloud, many browsers do not like the SSL signature that Micronaut creates and will not allow the frontend to communicate with our backend microservices. To circumvent this take the IP of your microservice, place it into browsers, and click "Advance" to allow your browser to trust the given IP. If you need more help, check out this [link](https://www.techrepublic.com/article/how-to-add-a-trusted-certificate-authority-certificate-to-chrome-and-firefox/)
 
 ## Otp-Service
 
