@@ -5,9 +5,16 @@
 - Jamison Engels 17300599
 - Amy Pierce 17330305
 - Ciara O'Sullivan 17321934
+
 ## Use Master Branch for Most Recent Build
 
+## About this project
+Our goal was to develop a program where a user can login without entering their full password. Instead, the user enters only part of their password, for example, they could be asked to enter the 3rd, 6th, and 7th characters of their predefined password. This method is more secure as even if a hacker phished this information, they will not know the entire password. They will also be sent an OTP by text. This must be entered into the website and verified in order to gain access to the account. This provides additional security by checking if the user has knowledge beyond access to the phone, and all the benefits of two-factor authentication.
+
 ## [Video of our prototype](https://www.youtube.com/watch?v=TT4H4aYJW3A&feature=youtu.be)
+
+## [Site Demo](https://ebusiness-project.herokuapp.com/)
+
 ## To Run Locally - Short Explanation 
 - Obtain Twillio credentials 
 - Setup Otp-Service and configure Micronaut to run your microservice locally 
