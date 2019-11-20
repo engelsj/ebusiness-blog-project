@@ -6,6 +6,14 @@
 - Amy Pierce 17330305
 - Ciara O'Sullivan 17321934
 ## Use Master Branch for Most Recent Build
+
+## To Run Locally - Short explanation 
+- Obtain Twillio credentials 
+- Setup Otp-Service and configure Micronaut to run your microservice locally 
+- Setup frontend and fill in all API calls to the backend with your localhost
+- Setup and configure database and configure your frontend database calls
+- Spin out the all of these programs at the same time and run ```npm start ``` to start your website
+
 ## Otp-Service
 
 ### Requirments 
